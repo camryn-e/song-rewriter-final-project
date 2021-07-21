@@ -6,7 +6,7 @@ class UsersController < ApplicationController
             session[:user_id] = user.id
             render json: user
         else
-            render json: {error: user.errors.full_messages.to_sentence}, status: :unprocessable_entity
+            render json: {error: "Username and Password Cannot Be Blank"}, status: :unprocessable_entity
         end
     end
 
@@ -15,8 +15,6 @@ class UsersController < ApplicationController
         user = User.find(session[:user_id])
         render json: user, include: :rewrites
     end
-
-    
 
     private
 
