@@ -10,4 +10,10 @@ class SessionsController < ApplicationController
         end
     end
 
+    def destroy #logout
+        return render json: { error: "Not Logged In" }, status: :unauthorized unless session.include? :user_id
+        session.delete :user_id
+        head :no_content
+    end
+
 end
