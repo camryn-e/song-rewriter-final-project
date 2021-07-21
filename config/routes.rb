@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  post "/signup", to: "users#create"
+
   resources :rewrites
 
   resources :songs, only: [:create, :show, :index] do
