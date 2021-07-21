@@ -1,0 +1,2 @@
+class RewritesController < ApplicationController
+end
