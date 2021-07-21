@@ -1,4 +1,4 @@
-class CreateRewrites < ActiveRecord::Migration[6.1]
+class Rewrites < ActiveRecord::Migration[6.1]
   def change
     create_table :rewrites do |t|
       t.string :title
