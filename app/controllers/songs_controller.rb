@@ -15,6 +15,11 @@ class SongsController < ApplicationController
     end
 
 
+    def index
+        songs = Songs.all
+        render json: songs
+    end
+
     private
 
     def song_params
