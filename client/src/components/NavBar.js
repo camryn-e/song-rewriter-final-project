@@ -20,7 +20,21 @@ const NavBar = (props) => {
                    <button>Log Out</button>
                 </NavLink>
             </div>
-        )     
+        ) 
+    } else {
+        return (
+            <div>
+               <NavLink to='/songs'>
+                   <button>All Songs</button>
+                </NavLink>
+               <NavLink to='/signup'>
+                   <button>Sign Up</button>
+                </NavLink>
+                <NavLink to='/login'>
+                    <button>Login!</button>
+                </NavLink>
+            </div>
+        )
     }
 }
 
