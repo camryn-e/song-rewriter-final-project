@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 const NewRewriteForm = ({original_lyrics}) => {
 
     const [title, setTitle] = useState('')
-    const [rewritten_lyrics, setRewrittenLyrics] = useState('')
-
+    const [rewritten_lyrics, setRewrittenLyrics] = useState(original_lyrics)
+    
     const handleSubmit = (e) => {
         e.preventDefault()
         fetch('/add-rewrite', {
