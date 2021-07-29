@@ -23,11 +23,11 @@ const SignupForm = ({onLogin}) => {
             })
         })
         .then(res => res.json())
-        .then(newUser => {
-            if(newUser.error){
-                setError(newUser.error)
+        .then(user => {
+            if(user.error){
+                setError(user.error)
             }else{
-                onLogin(newUser)
+                onLogin(user)
             }
         })
     }
@@ -41,15 +41,15 @@ const SignupForm = ({onLogin}) => {
                 </label>
                 <br/>
                 <label>Password:
-                <input type="password" id="password" name="password" value={password} onChange={e => setPassword(e.target.value)}/>
+                <input type="password" id="password" value={password} onChange={e => setPassword(e.target.value)}/>
                 </label>
                 <br/>
                 <label>Confirm Password:
-                <input type="password" id="password_confirmation" name="password_confirmation" value={password_confirmation} onChange={e => setPasswordConfirmation(e.target.value)}/>
+                <input type="password" id="password_confirmation" value={password_confirmation} onChange={e => setPasswordConfirmation(e.target.value)}/>
                 </label>
                 <br/>
                 <label>Name:
-                <input type="text" id="name" name="name" value={name} onChange={e => setName(e.target.value)}/>
+                <input type="text" id="name" value={name} onChange={e => setName(e.target.value)}/>
                 </label>
                 <br/>
                 <button type="submit">Sign Up!</button>

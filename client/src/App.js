@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Home from './components/Home'
 import NavBar from './components/NavBar';
@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     fetch('/me')
     .then(u => {
-      if(u.isOk){
+      if(u.ok){
         u.json()
         .then(newU => {
           setLoggedIn(true)
@@ -40,8 +40,9 @@ function App() {
       <Router>
       <NavBar user={user} loggedIn={loggedIn}/>
         <div>
-          <Route path="/" component={Home}/>
+          <Route exact path="/" component={Home}/>
           <Route exact path="/signup" render={routerProps => <SignupForm {...routerProps} onLogin={loginUser}/>}/>
+          <Route exact path="/login" render={routerProps => <LoginForm {...routerProps} onLogin={loginUser}/>}/>
         </div>
       </Router>
     </div>

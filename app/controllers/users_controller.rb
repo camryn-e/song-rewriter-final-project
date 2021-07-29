@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
     def create #signup
-        byebug
         user = User.create(user_params)
         if user.id
             session[:user_id] = user.id
