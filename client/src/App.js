@@ -35,10 +35,21 @@ function App() {
     history.push('/')
   }
 
+  const logoutUser = () => {
+    fetch('/logout', {
+      method: 'DELETE'
+    })
+    .then(() => {
+      setUser({})
+      setLoggedIn(false)
+      history.push('/')
+    })
+  }
+
   return (
     <div>
       <Router>
-      <NavBar user={user} loggedIn={loggedIn}/>
+      <NavBar user={user} loggedIn={loggedIn} loggedOut={logoutUser}/>
         <div>
           <Route exact path="/" component={Home}/>
           <Route exact path="/signup" render={routerProps => <SignupForm {...routerProps} onLogin={loginUser}/>}/>

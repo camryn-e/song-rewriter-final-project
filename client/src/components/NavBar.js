@@ -17,9 +17,7 @@ const NavBar = (props) => {
                <NavLink to='/rewrites'>
                    <button>Your Rewrites</button>
                 </NavLink>
-               <NavLink to='/logout'>
-                   <button>Log Out</button>
-                </NavLink>
+                <button onClick={props.loggedOut}>Log Out</button>
             </div>
         )
     } else {
