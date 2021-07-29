@@ -4,6 +4,7 @@ const NavBar = (props) => {
     if(props.loggedIn){
         return (
             <div>
+                <h1>Hello {props.user.username}</h1>
                <NavLink to='/add-song'>
                    <button>Add A Song</button>
                 </NavLink>
@@ -20,7 +21,7 @@ const NavBar = (props) => {
                    <button>Log Out</button>
                 </NavLink>
             </div>
-        ) 
+        )
     } else {
         return (
             <div>

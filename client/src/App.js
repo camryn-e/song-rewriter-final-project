@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Route, useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Home from './components/Home'
 import NavBar from './components/NavBar';
+import SignupForm from './forms/SignupForm';
+import LoginForm from './forms/LoginForm';
+import SongsPage from './components/SongsPage';
 
 function App() {
 
@@ -19,6 +22,12 @@ function App() {
       }
     })
   })
+
+  const loginUser = (u) => {
+    setLoggedIn(true)
+    setUser(u)
+    history.push('/')
+  }
 
   return (
     <div>
