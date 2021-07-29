@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
     def create #signup
+        byebug
         user = User.create(user_params)
         if user.id
             session[:user_id] = user.id
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:username, :password, :password_confirmation).permit(:id, :name)
+        params.permit(:id, :name, :username, :password, :password_confirmation)
     end
 
 end

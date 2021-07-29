@@ -1,5 +1,6 @@
 import './App.css';
-import { BrowserRouter as Router, Route, useHistory } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import { useState, useEffect } from 'react';
 import Home from './components/Home'
 import NavBar from './components/NavBar';
@@ -18,12 +19,17 @@ function App() {
     fetch('/me')
     .then(u => {
       if(u.isOk){
-        setUser(u)
+        u.json()
+        .then(newU => {
+          setLoggedIn(true)
+          setUser(newU)
+        })
       }
     })
-  })
+  }, [])
 
   const loginUser = (u) => {
+    console.log("this function is being called")
     setLoggedIn(true)
     setUser(u)
     history.push('/')

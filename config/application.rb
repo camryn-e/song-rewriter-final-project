@@ -8,6 +8,11 @@ Bundler.require(*Rails.groups)
 
 module SongRewriterFinalProject
   class Application < Rails::Application
+
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
+
+    config.action_dispatch.cookies_same_site_protection = :strict
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
@@ -18,5 +23,6 @@ module SongRewriterFinalProject
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.api_only = true
   end
 end

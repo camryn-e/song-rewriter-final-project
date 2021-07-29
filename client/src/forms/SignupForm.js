@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const SignupForm = () => {
+const SignupForm = ({onLogin}) => {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -18,7 +18,7 @@ const SignupForm = () => {
             body: JSON.stringify({
                 username: username,
                 password: password,
-                password_confirmation: passwordConfirmation,
+                password_confirmation: password_confirmation,
                 name: name
             })
         })
@@ -35,19 +35,26 @@ const SignupForm = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" value={username} onChange={e => setUsername(e.target.value)}/>
+                <label>
+                    Username:
+                    <input type="text" id="username" value={username} onChange={e => setUsername(e.target.value)}/>
+                </label>
                 <br/>
-                <label for="password">Password:</label>
+                <label>Password:
                 <input type="password" id="password" name="password" value={password} onChange={e => setPassword(e.target.value)}/>
+                </label>
                 <br/>
-                <label for="password_confirmation">Confirm Password:</label>
+                <label>Confirm Password:
                 <input type="password" id="password_confirmation" name="password_confirmation" value={password_confirmation} onChange={e => setPasswordConfirmation(e.target.value)}/>
-                <label for="name">Name:</label>
+                </label>
+                <br/>
+                <label>Name:
                 <input type="text" id="name" name="name" value={name} onChange={e => setName(e.target.value)}/>
+                </label>
                 <br/>
                 <button type="submit">Sign Up!</button>
             </form>
+            <h3>{error}</h3> 
         </div>
     )
 }

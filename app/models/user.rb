@@ -4,5 +4,4 @@ class User < ApplicationRecord
     has_many :songs, through: :rewrites
 
     validates :username, presence: true, uniqueness: true
-    validates :password, presence: true
 end
