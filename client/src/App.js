@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import SignupForm from './forms/SignupForm';
 import LoginForm from './forms/LoginForm';
 import SongsPage from './components/SongsPage';
+import NewSongForm from './forms/NewSongForm';
 
 function App() {
 
@@ -40,10 +41,10 @@ function App() {
       method: 'DELETE'
     })
     .then(() => {
-      setUser({})
       setLoggedIn(false)
-      history.push('/')
+      setUser({})
     })
+    history.push('/')
   }
 
   return (
@@ -51,9 +52,10 @@ function App() {
       <Router>
       <NavBar user={user} loggedIn={loggedIn} loggedOut={logoutUser}/>
         <div>
-          <Route exact path="/" component={Home}/>
+          <Route path="/" component={Home}/>
           <Route exact path="/signup" render={routerProps => <SignupForm {...routerProps} onLogin={loginUser}/>}/>
           <Route exact path="/login" render={routerProps => <LoginForm {...routerProps} onLogin={loginUser}/>}/>
+          <Route exact path="/add-song" component={NewSongForm}/>
         </div>
       </Router>
     </div>

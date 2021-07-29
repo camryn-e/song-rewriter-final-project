@@ -5,14 +5,30 @@ const NewSongForm = () => {
     const [title, setTitle] = useState('')
     const [original_lyrics, setOriginalLyrics] = useState('')
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        fetch('/songs', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                title: title,
+                original_lyrics: original_lyrics
+            })
+        })
+    }
+
     return (
         <div>
-            <form>
-                <label for="title">Title:</label>
-                <input type="text" id="title" name="title" value={title} onChange={e => setTitle(e.target.value)}/>
+            <form onSubmit={handleSubmit}>
+                <label for="title">Title:
+                <input type="text" id="title" value={title} onChange={e => setTitle(e.target.value)}/>
+                </label>
                 <br/>
-                <label for="original_lyrics">Original Lyrics:</label>
-                <input type="text" id="original_lyrics" name="original_lyrics" value={original_lyrics} onChange={e => setOriginalLyrics(e.target.value)}/>
+                <label>Original Lyrics:
+                <input type="text" id="original_lyrics" value={original_lyrics} onChange={e => setOriginalLyrics(e.target.value)}/>
+                </label>
                 <br/>
                 <button type="submit">Add Song!</button>
             </form>

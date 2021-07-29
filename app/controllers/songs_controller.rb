@@ -9,7 +9,7 @@ class SongsController < ApplicationController
             if new_song.id
                 render json: new_song, status: :created
             else
-                render json: { 'Title Cannot Be Blank' }
+                render json: { error: 'Title Cannot Be Blank' }
             end
         end
     end
@@ -23,7 +23,7 @@ class SongsController < ApplicationController
     private
 
     def song_params
-        params.require(:title).permit(:id, :original_lyrics)
+        params.permit(:id, :title, :original_lyrics)
     end
 
 end
