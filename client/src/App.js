@@ -35,6 +35,7 @@ function App() {
       <NavBar user={user} loggedIn={loggedIn}/>
         <div>
           <Route path="/" component={Home}/>
+          <Route exact path="/signup" render={routerProps => <SignupForm {...routerProps} onLogin={loginUser}/>}/>
         </div>
       </Router>
     </div>
