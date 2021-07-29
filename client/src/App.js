@@ -56,6 +56,7 @@ function App() {
           <Route exact path="/signup" render={routerProps => <SignupForm {...routerProps} onLogin={loginUser}/>}/>
           <Route exact path="/login" render={routerProps => <LoginForm {...routerProps} onLogin={loginUser}/>}/>
           <Route exact path="/add-song" component={NewSongForm}/>
+          <Route exact path="/songs" component={SongsPage}/>
         </div>
       </Router>
     </div>
