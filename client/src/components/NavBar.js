@@ -5,9 +5,6 @@ const NavBar = (props) => {
         return (
             <div>
                 <h1>Hello {props.user.username}</h1>
-               <NavLink to='/add-song'>
-                   <button>Add A Song</button>
-                </NavLink>
                <NavLink to='/add-rewrite'>
                    <button>Add A Rewrite</button>
                 </NavLink>

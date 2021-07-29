@@ -1,21 +1,15 @@
 import { useEffect, useState } from "react";
 
-const NewSongForm = () => {
+const NewSongForm = ({addNewSong}) => {
 
     const [title, setTitle] = useState('')
     const [original_lyrics, setOriginalLyrics] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch('/songs', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                title: title,
-                original_lyrics: original_lyrics
-            })
+        addNewSong({
+            title: title,
+            original_lyrics: original_lyrics
         })
     }
 
