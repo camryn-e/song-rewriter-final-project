@@ -1,6 +1,6 @@
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import { useState, useEffect } from 'react';
 import Home from './components/Home'
 import NavBar from './components/NavBar';
@@ -49,8 +49,8 @@ function App() {
 
   return (
     <div>
-      <Router>
       <NavBar user={user} loggedIn={loggedIn} loggedOut={logoutUser}/>
+      <Switch>
         <div>
           <Route path="/" component={Home}/>
           <Route exact path="/signup" render={routerProps => <SignupForm {...routerProps} onLogin={loginUser}/>}/>
@@ -58,7 +58,7 @@ function App() {
           <Route exact path="/add-song" component={NewSongForm}/>
           <Route exact path="/songs" component={SongsPage}/>
         </div>
-      </Router>
+      </Switch>
     </div>
   );
 }
