@@ -5,9 +5,26 @@ const NewRewriteForm = ({original_lyrics}) => {
     const [title, setTitle] = useState('')
     const [rewritten_lyrics, setRewrittenLyrics] = useState('')
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        fetch('/add-rewrite', {
+            method: 'POST',
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify({
+                title: title,
+                rewritten_lyrics: rewritten_lyrics
+            })
+        })
+        .then(res => res.json())
+        .then(r => (console.log(r)))
+    }
+
+
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>Title:
                 <input type="text" id="title" value={title} onChange={e => setTitle(e.target.value)}/>
                 </label>
