@@ -9,6 +9,7 @@ import LoginForm from './forms/LoginForm';
 import SongsPage from './components/SongsPage';
 import NewSongForm from './forms/NewSongForm';
 import NewRewriteForm from './forms/NewRewriteForm';
+import Song from './components/Song';
 
 function App() {
 
@@ -57,6 +58,7 @@ function App() {
           <Route exact path="/signup" render={routerProps => <SignupForm {...routerProps} onLogin={loginUser}/>}/>
           <Route exact path="/login" render={routerProps => <LoginForm {...routerProps} onLogin={loginUser}/>}/>
           <Route exact path="/add-song" component={NewSongForm}/>
+          <Route path="/songs/:id" component={Song}/>
           <Route exact path="/songs" component={SongsPage}/>
           <Route exact path="/add-rewrite" component={NewRewriteForm}/>
         </div>

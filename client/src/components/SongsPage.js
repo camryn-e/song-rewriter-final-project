@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import SongLink from "../links/SongLink";
 
 const SongsPage = () => {
     const [songs, setSongs] = useState([])
@@ -12,7 +13,7 @@ const SongsPage = () => {
         })
     }, [])
 
-    const songsList = songs.map(s => <div key={s.id}><li>{s.title}</li></div>)
+    const songsList = songs.map(s => <SongLink key={s.id} song={s}/>)
 
     return (
         <div>
