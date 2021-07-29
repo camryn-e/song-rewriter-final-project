@@ -10,10 +10,20 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const history = useHistory();
 
+
+  useEffect(() => {
+    fetch('/me')
+    .then(u => {
+      if(u.isOk){
+        setUser(u)
+      }
+    })
+  })
+
   return (
     <div>
       <Router>
-      <NavBar/>
+      <NavBar user={user} loggedIn={loggedIn}/>
         <div>
           <Route path="/" component={Home}/>
         </div>
