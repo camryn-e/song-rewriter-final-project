@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import RewriteLink from "../links/RewriteLink";
 
-const Profile = ({user}) => {
+const Profile = (props) => {
     
     // const [rewrite, setRewrite] = useState({
     //     username: '',
@@ -16,19 +16,18 @@ const Profile = ({user}) => {
     //         setRewrite(rewriteData)
     //     })
     // }, [props.match.params.id])
-    if(user.error === ''){
-        const rewriteList = user.rewrites.map(r => <RewriteLink key={r.id} rewrite={r}/>)
+    if(props.loggedIn){
+        const rewriteList = props.user.rewrites.map(r => <RewriteLink key={r.id} rewrite={r}/>)
 
         return (
             <div>
-                <h2>{user.name}</h2>
+                <h2>{props.user.name}</h2>
                 <ul>
                     {rewriteList}
                 </ul>
             </div>
         )
     } else {
-        console.log(user.error)
         return(
             <h3>Unauthorized. Please Sign Up or Log In!</h3>
             // <h3>{user.error}</h3>

@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get '/me', to: "users#show"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
-  post '/add-rewrite', to: 'rewrites#create'
+  post '/songs/:song_id/rewrites', to: 'rewrites#create'
+  # get '/songs/:song_id/rewrites', to: "rewrites#index"
   get '/songs/:song_id/rewrites/:id', to: "rewrites#show"
   get '/songs', to: "songs#index"
   post '/songs', to: "songs#create"

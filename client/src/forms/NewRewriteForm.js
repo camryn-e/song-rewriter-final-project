@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-const NewRewriteForm = (props) => {
+const NewRewriteForm = ({original_lyrics, addNewRewrite}) => {
 
     const [title, setTitle] = useState('')
-    const [rewritten_lyrics, setRewrittenLyrics] = useState(props.original_lyrics)
+    const [rewritten_lyrics, setRewrittenLyrics] = useState(original_lyrics)
     
     const handleSubmit = (e) => {
         e.preventDefault()
-        props.addNewRewrite({
+        addNewRewrite({
             title: title,
             rewritten_lyrics: rewritten_lyrics
         })

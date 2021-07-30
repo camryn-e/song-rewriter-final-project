@@ -4,7 +4,8 @@ const Rewrite = (props) => {
     
     const [rewrite, setRewrite] = useState({
         title: '',
-        rewritten_lyrics: ''
+        rewritten_lyrics: '',
+        user: {}
     })
 
     useEffect(() => {
@@ -20,7 +21,7 @@ const Rewrite = (props) => {
         <div>
             <h2>{rewrite.title}</h2>
             <p>{rewrite.rewritten_lyrics}</p>
-            {/* <p>By: {rewrite.user.username}</p> */}
+            <p>By: {rewrite.user.username}</p>
         </div>
     )
 

@@ -18,7 +18,7 @@ const Song = (props) => {
         fetch(`/songs/${props.match.params.id}`)
           .then(response => response.json())
           .then(rewritesData => {
-              console.log(rewritesData)
+              console.log("rewrite data", rewritesData)
               setSong(rewritesData)
               console.log("rewrites", song.rewrites)
           })
@@ -26,7 +26,7 @@ const Song = (props) => {
 
 
     const addRewrite = (rewrite) => {
-        fetch(`/songs/${props.match.params.id}`, {
+        fetch(`/songs/${props.match.params.id}/rewrites`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
