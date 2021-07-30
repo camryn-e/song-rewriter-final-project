@@ -57,7 +57,7 @@ function App() {
       <NavBar user={user} loggedIn={loggedIn} loggedOut={logoutUser}/>
       <Switch>
         <div>
-          <Route path="/" component={Home}/>
+          <Route exact path="/" component={Home}/>
           <Route exact path="/signup" render={routerProps => <SignupForm {...routerProps} onLogin={loginUser}/>}/>
           <Route exact path="/login" render={routerProps => <LoginForm {...routerProps} onLogin={loginUser}/>}/>
           <Route exact path="/add-song" component={NewSongForm}/>

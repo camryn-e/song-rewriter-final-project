@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import RewriteLink from "../links/RewriteLink";
 
 const Profile = ({user}) => {
     
@@ -16,7 +17,7 @@ const Profile = ({user}) => {
     //     })
     // }, [props.match.params.id])
 
-    const rewriteList = user.rewrites.map(r => <div key={r.id}><p>{r.title}</p></div>)
+    const rewriteList = user.rewrites.map(r => <RewriteLink key={r.id} rewrite={r}/>)
 
     return (
         <div>
