@@ -1,7 +1,7 @@
 class SongsController < ApplicationController
 
     def create
-        song = Song.find_by(id: params[:id])
+        song = Song.find_by(title: params[:title])
         if song
             render json: { error: "Song Already Exists" }, status: :unprocessable_entity
         else

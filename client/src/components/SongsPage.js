@@ -5,6 +5,7 @@ import NewSongForm from "../forms/NewSongForm";
 const SongsPage = () => {
     const [songs, setSongs] = useState([])
     const [formFlag, setFormFlag] = useState(false)
+    const [error, setError] = useState('')
 
     useEffect(() => {
         fetch('/songs')
@@ -25,7 +26,11 @@ const SongsPage = () => {
         })
         .then(res => res.json())
         .then(newSong => {
-            setSongs([...songs, newSong])
+            if(newSong.error){
+                setError(newSong.error)
+            }else{
+                setSongs([...songs, newSong])
+            }
         })
         setFormFlag(false)
     }
@@ -38,6 +43,7 @@ const SongsPage = () => {
                 {songsList}
                 {formFlag ? <NewSongForm addNewSong={addSong}/> : <button onClick={() => setFormFlag(true)}>Add Song</button>}
             </ul>
+            <h3>{error}</h3>
         </div>
     )
 

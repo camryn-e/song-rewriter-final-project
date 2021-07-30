@@ -16,12 +16,12 @@ const NewSongForm = ({addNewSong}) => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <label for="title">Title:
+                <label>Title:
                 <input type="text" id="title" value={title} onChange={e => setTitle(e.target.value)}/>
                 </label>
                 <br/>
                 <label>Original Lyrics:
-                <input type="text" id="original_lyrics" value={original_lyrics} onChange={e => setOriginalLyrics(e.target.value)}/>
+                <textarea cols="50" rows="10" id="original_lyrics" value={original_lyrics} onChange={e => setOriginalLyrics(e.target.value)}/>
                 </label>
                 <br/>
                 <button type="submit">Add Song!</button>
