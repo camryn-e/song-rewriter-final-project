@@ -18,12 +18,6 @@ class RewritesController < ApplicationController
         render json: rewrite, include: :user
     end
 
-    # def index
-    #     song = Song.find_by(id: params[:song_id])
-    #     rewrites = song.rewrites.all
-    #     render json: rewrites
-    # end
-
     private
 
     def rewrite_params

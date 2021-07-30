@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   post '/songs/:song_id/rewrites', to: 'rewrites#create'
   # get '/songs/:song_id/rewrites', to: "rewrites#index"
   get '/songs/:song_id/rewrites/:id', to: "rewrites#show"
+  get '/songs/:id', to: "songs#show"
   get '/songs', to: "songs#index"
   post '/songs', to: "songs#create"
-  get '/songs/:id', to: "songs#show"
+  # get '/songs/:id', to: "songs#show"
 
   # resources :songs, only: [:create, :show, :index] do
   #   resources :rewrites, only: [:show]

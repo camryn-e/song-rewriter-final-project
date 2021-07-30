@@ -3,9 +3,6 @@ import RewriteLink from "../links/RewriteLink";
 import NewRewriteForm from "../forms/NewRewriteForm";
 
 const Song = (props) => {
-    // const [title, setTitle] = useState('');
-    // const [rewrites, setRewrites] = useState([])
-    // const [formFlag, setFormFlag] = useState(false);
 
     const [song, setSong] = useState({
         title: '',
@@ -48,7 +45,6 @@ const Song = (props) => {
 
     const rewriteList = song.rewrites.map(r => <RewriteLink key={r.id} rewrite={r}/>)
 
-    // <RewriteLink key={r.id} rewrite={r}/>
     return(
         <div>
             <h2>{song.title}</h2>
