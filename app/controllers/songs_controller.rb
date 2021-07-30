@@ -20,6 +20,11 @@ class SongsController < ApplicationController
         render json: songs
     end
 
+    def show
+        song = Song.find_by(id: params[:id])
+        render json: song, include: :rewrites
+    end
+
     private
 
     def song_params
