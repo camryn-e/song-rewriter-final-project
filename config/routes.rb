@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/songs/:id', to: "songs#show"
   get '/songs', to: "songs#index"
   post '/songs', to: "songs#create"
+  delete '/delete-account', to: 'users#destroy'
   # get '/songs/:id', to: "songs#show"
 
   # resources :songs, only: [:create, :show, :index] do

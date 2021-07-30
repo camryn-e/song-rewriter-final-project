@@ -59,9 +59,20 @@ function App() {
     history.push('/')
   }
 
+  const deleteAccount = () => {
+    fetch('/delete-account',{
+      method: 'DELETE'
+    })
+    .then(() => {
+      setLoggedIn(false)
+      setUser({})
+    })
+    history.push('/')
+  }
+
   return (
     <div>
-      <NavBar user={user} loggedIn={loggedIn} loggedOut={logoutUser}/>
+      <NavBar user={user} loggedIn={loggedIn} loggedOut={logoutUser} deleteAccount={deleteAccount}/>
       <Switch>
         <div>
           <Route exact path="/" component={Home}/>
@@ -71,10 +82,6 @@ function App() {
           <Route path={`/songs/:song_id/rewrites/:id`} component={Rewrite}/>
           <Route path={`/songs/:id`} component={Song}/>
           <Route exact path="/songs" component={SongsPage}/>
-          {/* <Route path={`/songs/:id`} component={Song}/>
-          <Route path={`/songs/:song_id/rewrites/:id`} component={Rewrite}/> */}
-          {/* <Route path="/songs/:id" component={Song}/> */}
-          {/* <Route exact path="/songs" component={SongsPage}/> */}
           <Route exact path="/add-rewrite" component={NewRewriteForm}/>
           <Route exact path="/profile" component={Profile}/>
         </div>

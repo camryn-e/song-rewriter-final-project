@@ -12,6 +12,7 @@ const NavBar = (props) => {
                    <button>Profile</button>
                 </NavLink>
                 <button onClick={props.loggedOut}>Log Out</button>
+                <button onClick={props.deleteAccount}>Delete Account</button>
             </div>
         )
     } else {
