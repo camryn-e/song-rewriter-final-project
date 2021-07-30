@@ -24,7 +24,7 @@ const NewSongForm = ({addNewSong}) => {
                 <textarea cols="50" rows="10" id="original_lyrics" value={original_lyrics} onChange={e => setOriginalLyrics(e.target.value)}/>
                 </label>
                 <br/>
-                <button type="submit">Add Song!</button>
+                <button type="submit">Submit!</button>
             </form>
         </div>
     )

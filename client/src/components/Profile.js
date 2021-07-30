@@ -16,18 +16,24 @@ const Profile = ({user}) => {
     //         setRewrite(rewriteData)
     //     })
     // }, [props.match.params.id])
+    if(user.error === ''){
+        const rewriteList = user.rewrites.map(r => <RewriteLink key={r.id} rewrite={r}/>)
 
-    const rewriteList = user.rewrites.map(r => <RewriteLink key={r.id} rewrite={r}/>)
-
-    return (
-        <div>
-            <h2>{user.name}</h2>
-            <ul>
-                {rewriteList}
-            </ul>
-        </div>
-    )
-
+        return (
+            <div>
+                <h2>{user.name}</h2>
+                <ul>
+                    {rewriteList}
+                </ul>
+            </div>
+        )
+    } else {
+        console.log(user.error)
+        return(
+            <h3>Unauthorized. Please Sign Up or Log In!</h3>
+            // <h3>{user.error}</h3>
+        )
+    }
 }
 
 export default Profile

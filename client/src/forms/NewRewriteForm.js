@@ -11,21 +11,6 @@ const NewRewriteForm = (props) => {
             title: title,
             rewritten_lyrics: rewritten_lyrics
         })
-        // fetch('/add-rewrite', {
-        //     method: 'POST',
-        //     headers: {
-        //         "Content-Type": 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         title: title,
-        //         rewritten_lyrics: rewritten_lyrics,
-        //         song_id: props.song_id
-        //     })
-        // })
-        // .then(res => res.json())
-        // .then(r => {
-
-        // })
     }
 
 
@@ -40,7 +25,7 @@ const NewRewriteForm = (props) => {
                 <textarea cols="50" rows="10" id="rewritten_lyrics" value={rewritten_lyrics} onChange={e => setRewrittenLyrics(e.target.value)}/>
                 </label>
                 <br/>
-                <button type="submit">Add Rewrite!</button>
+                <button type="submit">Submit!</button>
             </form>
         </div>
     )

@@ -27,6 +27,7 @@ const SignupForm = ({onLogin}) => {
             if(user.error){
                 setError(user.error)
             }else{
+                console.log(user)
                 onLogin(user)
             }
         })
