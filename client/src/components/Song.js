@@ -12,6 +12,7 @@ const Song = (props) => {
         rewrites: []
     })
     const [formFlag, setFormFlag] = useState(false);
+    const [error, setError] = useState('')
 
     useEffect(() => {
         fetch(`/songs/${props.match.params.id}`)
@@ -34,9 +35,13 @@ const Song = (props) => {
         })
         .then(res => res.json())
         .then(newRewrite => {
-            setSong({
-                rewrites: [...song.rewrites, newRewrite]
-            })
+            if(newRewrite.error) {
+                setError(newRewrite.error)
+            }else{
+                setSong({
+                    rewrites: [...song.rewrites, newRewrite]
+                })
+            }
         })
         setFormFlag(false)
     }
@@ -51,6 +56,7 @@ const Song = (props) => {
                 {rewriteList}
                 {formFlag ? <NewRewriteForm addNewRewrite={addRewrite} original_lyrics={song.original_lyrics} song_id={song.id}/> : <button onClick={() => setFormFlag(true)}>Add Rewrite</button>}
             </ul>
+            <h3>{error}</h3>
         </div>
     )
 

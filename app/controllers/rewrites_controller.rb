@@ -1,5 +1,5 @@
 class RewritesController < ApplicationController
-    # before_action :authorize
+    before_action :authorize, only: [:create]
     
 
     def create # add rewrite

@@ -7,19 +7,25 @@ const NewRewriteForm = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch('/add-rewrite', {
-            method: 'POST',
-            headers: {
-                "Content-Type": 'application/json'
-            },
-            body: JSON.stringify({
-                title: title,
-                rewritten_lyrics: rewritten_lyrics,
-                song_id: props.song_id
-            })
+        props.addNewRewrite({
+            title: title,
+            rewritten_lyrics: rewritten_lyrics
         })
-        .then(res => res.json())
-        .then(r => (console.log(r)))
+        // fetch('/add-rewrite', {
+        //     method: 'POST',
+        //     headers: {
+        //         "Content-Type": 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         title: title,
+        //         rewritten_lyrics: rewritten_lyrics,
+        //         song_id: props.song_id
+        //     })
+        // })
+        // .then(res => res.json())
+        // .then(r => {
+
+        // })
     }
 
 
