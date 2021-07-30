@@ -11,6 +11,7 @@ import NewSongForm from './forms/NewSongForm';
 import NewRewriteForm from './forms/NewRewriteForm';
 import Song from './components/Song';
 import Rewrite from './components/Rewrite';
+import Profile from './components/Profile'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
         .then(newU => {
           setLoggedIn(true)
           setUser(newU)
+          console.log('user:', newU)
         })
       }
     })
@@ -63,6 +65,7 @@ function App() {
           <Route path="/songs/:id" component={Song}/>
           <Route exact path="/songs" component={SongsPage}/>
           <Route exact path="/add-rewrite" component={NewRewriteForm}/>
+          <Route exact path="/profile" render={routerProps => <Profile {...routerProps} user={user}/>}/>
         </div>
       </Switch>
     </div>

@@ -16,10 +16,14 @@ const Profile = ({user}) => {
     //     })
     // }, [props.match.params.id])
 
+    const rewriteList = user.rewrites.map(r => <div key={r.id}><p>{r.title}</p></div>)
+
     return (
         <div>
             <h2>{user.name}</h2>
-            <p>{user.rewrites}</p>
+            <ul>
+                {rewriteList}
+            </ul>
         </div>
     )
 
