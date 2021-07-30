@@ -1,8 +1,26 @@
 import { useEffect, useState } from "react";
 
-const Rewrite = () => {
-    const [title, setTitle] = useState('')
-    const [rewritten_lyrics, setRewrittenLyrics] = useState('')
+const Rewrite = (props) => {
+    const [rewrite, setRewrite] = useState({
+        title: '',
+        rewritten_lyrics: ''
+    })
+
+    useEffect(() => {
+        fetch(`/songs/${props.match.params.song_id}/rewrites/${props.match.params.id}`)
+        .then(res => res.json())
+        .then(rewriteData => {
+            setRewrite(rewriteData)
+        })
+    })
+
+    return (
+        <div>
+            <h2>{rewrite.title}</h2>
+            <p>{rewrite.rewritten_lyrics}</p>
+        </div>
+    )
+
 }
 
 export default Rewrite

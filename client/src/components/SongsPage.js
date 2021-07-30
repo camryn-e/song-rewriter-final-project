@@ -28,7 +28,7 @@ const SongsPage = () => {
             setSongs([...songs, newSong])
         })
         setFormFlag(false)
-}
+    }
 
     const songsList = songs.map(s => <SongLink key={s.id} song={s}/>)
 
