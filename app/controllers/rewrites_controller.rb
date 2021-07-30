@@ -15,7 +15,7 @@ class RewritesController < ApplicationController
     def show
         song = Song.find_by(id: params[:song_id])
         rewrite = song.rewrites.find(params[:id])
-        render json: rewrite
+        render json: rewrite, include: :user
     end
 
     private
@@ -24,8 +24,8 @@ class RewritesController < ApplicationController
         params.permit(:id, :title, :rewritten_lyrics, :song_id, :user_id)
     end
 
-    # def authorize
-    #     return render json: { error: "Not Logged In" }, status: :unauthorized unless session.include? :user_id
-    # end
+    def authorize
+        return render json: { error: "Not Logged In" }, status: :unauthorized unless session.include? :user_id
+    end
 
 end

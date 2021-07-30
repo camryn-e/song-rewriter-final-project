@@ -12,6 +12,7 @@ const Rewrite = (props) => {
         .then(res => res.json())
         .then(rewriteData => {
             setRewrite(rewriteData)
+            // console.log(rewriteData.user)
         })
     }, [props.match.params.id])
 
@@ -19,6 +20,7 @@ const Rewrite = (props) => {
         <div>
             <h2>{rewrite.title}</h2>
             <p>{rewrite.rewritten_lyrics}</p>
+            {/* <p>By: {rewrite.user.username}</p> */}
         </div>
     )
 

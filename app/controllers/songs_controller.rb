@@ -1,4 +1,5 @@
 class SongsController < ApplicationController
+    before_action :authorize, only: [:create]
 
     def create
         song = Song.find_by(title: params[:title])
@@ -29,6 +30,10 @@ class SongsController < ApplicationController
 
     def song_params
         params.permit(:id, :title, :original_lyrics)
+    end
+
+    def authorize
+        return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
     end
 
 end
