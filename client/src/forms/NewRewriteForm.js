@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-const NewRewriteForm = ({original_lyrics}) => {
+const NewRewriteForm = (props) => {
 
     const [title, setTitle] = useState('')
-    const [rewritten_lyrics, setRewrittenLyrics] = useState(original_lyrics)
+    const [rewritten_lyrics, setRewrittenLyrics] = useState(props.original_lyrics)
     
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -14,7 +14,8 @@ const NewRewriteForm = ({original_lyrics}) => {
             },
             body: JSON.stringify({
                 title: title,
-                rewritten_lyrics: rewritten_lyrics
+                rewritten_lyrics: rewritten_lyrics,
+                song_id: props.song_id
             })
         })
         .then(res => res.json())
