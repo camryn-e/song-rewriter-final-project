@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 const Rewrite = (props) => {
+    
     const [rewrite, setRewrite] = useState({
         title: '',
         rewritten_lyrics: ''
@@ -12,7 +13,7 @@ const Rewrite = (props) => {
         .then(rewriteData => {
             setRewrite(rewriteData)
         })
-    })
+    }, [props.match.params.id])
 
     return (
         <div>

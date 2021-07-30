@@ -5,10 +5,13 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
   post '/add-rewrite', to: 'rewrites#create'
+  get '/songs/:song_id/rewrites/:id', to: "rewrites#show"
+  get '/songs', to: "songs#index"
+  get '/songs/:id', to: "songs#show"
 
-  resources :songs, only: [:create, :show, :index] do
-    resources :rewrites, only: [:show]
-  end
+  # resources :songs, only: [:create, :show, :index] do
+  #   resources :rewrites, only: [:show]
+  # end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

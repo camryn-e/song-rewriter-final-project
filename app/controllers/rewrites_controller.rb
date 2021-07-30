@@ -1,5 +1,6 @@
 class RewritesController < ApplicationController
-    before_action :authorize
+    # before_action :authorize
+    
 
     def create # add rewrite
         user = User.find_by(id: session[:user_id])
@@ -11,14 +12,20 @@ class RewritesController < ApplicationController
         end
     end
 
+    def show
+        song = Song.find_by(id: params[:song_id])
+        rewrite = song.rewrites.find(params[:id])
+        render json: rewrite
+    end
+
     private
 
     def rewrite_params
         params.permit(:id, :title, :rewritten_lyrics, :song_id, :user_id)
     end
 
-    def authorize
-        return render json: { error: "Not Logged In" }, status: :unauthorized unless session.include? :user_id
-    end
+    # def authorize
+    #     return render json: { error: "Not Logged In" }, status: :unauthorized unless session.include? :user_id
+    # end
 
 end
