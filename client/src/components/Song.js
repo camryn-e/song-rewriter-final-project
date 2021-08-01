@@ -8,16 +8,18 @@ const Song = (props) => {
         title: '',
         rewrites: []
     })
+
+    // const [rewrites, setRewrites] = useState([])
+
     const [formFlag, setFormFlag] = useState(false);
     const [error, setError] = useState('')
 
     useEffect(() => {
-        fetch(`/songs/${props.match.params.id}`)
+        fetch(`/songs/${props.match.params.id}/rewrites`)
           .then(response => response.json())
           .then(rewritesData => {
               console.log("rewrite data", rewritesData)
               setSong(rewritesData)
-              console.log("rewrites", song.rewrites)
           })
     }, [props.match.params.id])
 
@@ -35,6 +37,7 @@ const Song = (props) => {
             if(newRewrite.error) {
                 setError(newRewrite.error)
             }else{
+                console.log("user on creation", newRewrite.user_id)
                 setSong({
                     rewrites: [...song.rewrites, newRewrite]
                 })
@@ -43,7 +46,7 @@ const Song = (props) => {
         setFormFlag(false)
     }
 
-    const rewriteList = song.rewrites.map(r => <RewriteLink key={r.id} rewrite={r}/>)
+    const rewriteList = song.rewrites.map((r) => <RewriteLink key={r.id} rewrite={r}/>)
 
     return(
         <div>

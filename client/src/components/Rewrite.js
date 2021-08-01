@@ -8,14 +8,17 @@ const Rewrite = (props) => {
         user: {}
     })
 
+    
+
     useEffect(() => {
         fetch(`/songs/${props.match.params.song_id}/rewrites/${props.match.params.id}`)
         .then(res => res.json())
         .then(rewriteData => {
             setRewrite(rewriteData)
-            // console.log(rewriteData.user)
+            console.log("rewrite data user", rewriteData.user)
+            console.log(rewriteData.user)
         })
-    }, [props.match.params.id])
+    }, [props.match.params.id, props.match.params.song_id])
 
     return (
         <div>

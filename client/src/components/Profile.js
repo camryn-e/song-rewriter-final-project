@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RewriteLink from "../links/RewriteLink";
+import MyRewriteLink from "../links/RewriteLink";
 
 const Profile = () => {
     
@@ -23,8 +23,25 @@ const Profile = () => {
         })
     }, [])
 
+    const deleteRewrite = (rewrite) => {
+        fetch(`/songs/${rewrite.song_id}/rewrites/${rewrite.id}`,{
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json"
+            }
+          })
+          .then(() => {
+            const currentRewrites = user.rewrites.filter(e => e.id !== rewrite.id)
+            console.log("curr rewrites", currentRewrites)
+            setUser({
+                ...user,
+                rewrites: currentRewrites
+            })
+          })
+    }
+
     if(error === ''){
-        const rewriteList = user.rewrites.map(r => <RewriteLink key={r.id} rewrite={r}/>)
+        const rewriteList = user.rewrites.map(r => <MyRewriteLink key={r.id} rewrite={r} deleteRewrite={deleteRewrite}/>)
 
         return (
             <div>

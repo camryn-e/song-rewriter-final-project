@@ -21,7 +21,6 @@ function App() {
     rewrites: []
   })
   const [loggedIn, setLoggedIn] = useState(false)
-  const [error, setError] = useState('')
   const history = useHistory();
 
 
@@ -70,6 +69,18 @@ function App() {
     history.push('/')
   }
 
+  // const deleteRewrite = () => {
+  //   fetch(`/songs/${rewrite.song_id}/rewrites/${rewrite.id}`,{
+  //     method: 'DELETE'
+  //   })
+  //   .then(() => {
+  //     setUser({
+
+  //     })
+  //   })
+  //   history.push('/')
+  // }
+
   return (
     <div>
       <NavBar user={user} loggedIn={loggedIn} loggedOut={logoutUser} deleteAccount={deleteAccount}/>
@@ -80,7 +91,9 @@ function App() {
           <Route exact path="/login" render={routerProps => <LoginForm {...routerProps} onLogin={loginUser}/>}/>
           <Route exact path="/add-song" component={NewSongForm}/>
           <Route path={`/songs/:song_id/rewrites/:id`} component={Rewrite}/>
-          <Route path={`/songs/:id`} component={Song}/>
+          <Route path={`/songs/:id/rewrites`} component={Song}/>
+          {/* <Route path={`/songs/:song_id/rewrites/:id`} component={Rewrite}/> */}
+          {/* <Route path={`/songs/:id`} component={Song}/> */}
           <Route exact path="/songs" component={SongsPage}/>
           <Route exact path="/add-rewrite" component={NewRewriteForm}/>
           <Route exact path="/profile" component={Profile}/>
