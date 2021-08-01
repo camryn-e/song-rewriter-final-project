@@ -14,19 +14,15 @@ class RewritesController < ApplicationController
     end
 
     def show # display single rewrite
-        # byebug
-        # song = Song.find_by(id: params[:song_id])
-        rewrite = Rewrite.find_by(params[:id])
-        # user = User.find_by(id: params[:user_id])
-        # byebug
+        rewrite = Rewrite.find_by(id: params[:id])
         render json: rewrite, include: :user
     end
 
-    def index
-        song = Song.find_by(id: params[:song_id])
-        rewrites = song.rewrites.all
-        render json: rewrites, include: :users
-    end
+    # def index
+    #     song = Song.find_by(id: params[:song_id])
+    #     rewrites = song.rewrites.all
+    #     render json: rewrites, include: :users
+    # end
 
     def destroy # delete rewrite
         user = User.find_by(id: session[:user_id])
