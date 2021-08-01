@@ -1,18 +1,27 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
-  post "/signup", to: "users#create"
-  get '/me', to: "users#show"
-  post '/login', to: "sessions#create"
-  delete '/logout', to: "sessions#destroy"
+Rails.application.routes.draw do
+  # posts
+  post '/signup', to: 'users#create'
+  post '/login', to: 'sessions#create'
   post '/songs/:song_id/rewrites', to: 'rewrites#create'
-  # get '/songs/:song_id/rewrites', to: "rewrites#index"
-  get '/songs/:song_id/rewrites/:id', to: "rewrites#show"
-  get '/songs/:id/rewrites', to: "songs#show"
-  get '/songs', to: "songs#index"
-  post '/songs', to: "songs#create"
+  post '/songs', to: 'songs#create'
+  patch '/songs/:song_id/rewrites/:id', to: 'rewrites#update'
+
+  # get
+  get '/me', to: 'users#show'
+  get '/songs/:song_id/rewrites/:id', to: 'rewrites#show'
+  get '/songs/:id/rewrites', to: 'songs#show'
+  get '/songs', to: 'songs#index'
+
+  # delete
+  delete '/logout', to: 'sessions#destroy'
   delete '/delete-account', to: 'users#destroy'
   delete '/songs/:song_id/rewrites/:id', to: 'rewrites#destroy'
-  # get '/songs/:id', to: "songs#show"
+
+  # resources :songs do
+  #   resources :rewrites
+  # end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

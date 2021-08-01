@@ -1,7 +1,7 @@
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import { useHistory } from "react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import SignupForm from "./forms/SignupForm";
@@ -22,21 +22,21 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const history = useHistory();
 
-  // useEffect(() => {
-  //   fetch('/me')
-  //   .then(u => {
-  //     if(u.ok){
-  //       u.json()
-  //       .then(newU => {
-  //         setLoggedIn(true)
-  //         setUser(newU)
-  //         console.log('user:', newU)
-  //       })
-  //     // }else{
-  //     //   setError(u.error)
-  //     }
-  //   })
-  // }, [])
+  useEffect(() => {
+    fetch('/me')
+    .then(u => {
+      if(u.ok){
+        u.json()
+        .then(newU => {
+          setLoggedIn(true)
+          setUser(newU)
+          console.log('user:', newU)
+        })
+      // }else{
+      //   setError(u.error)
+      }
+    })
+  }, [])
 
   const loginUser = (u) => {
     console.log("this function is being called");
