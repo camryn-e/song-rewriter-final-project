@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RewritesController < ApplicationController
-  before_action :authorize, except: %i[show index]
+  before_action :authorize, except: [:show]
 
   # add rewrite
   def create
@@ -23,9 +23,19 @@ class RewritesController < ApplicationController
 
   # edit rewrite
   def update
-    rewrite = Rewrite.find_by(id: params[:id])
-    rewrite.update(rewritten_lyrics: params[:rewritten_lyrics])
-    render json: rewrite, include: :user
+    # rewrite = Rewrite.find_by(id: params[:id])
+    # rewrite.update(rewritten_lyrics: params[:rewritten_lyrics])
+    # render json: rewrite, include: :user
+
+    user = User.find_by(id: session[:user_id])
+    rewrite = user.rewrites.find_by(id: params[:id])
+
+    if rewrite
+      rewrite.update(rewritten_lyrics: params[:rewritten_lyrics])
+      render json: rewrite
+    else
+      render json: { error: 'Not Your Rewrite' }
+    end
   end
 
   # delete rewrite

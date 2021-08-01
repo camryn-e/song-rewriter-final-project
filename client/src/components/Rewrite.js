@@ -9,6 +9,7 @@ const Rewrite = (props) => {
         user: {}
     })
     const [formFlag, setFormFlag] = useState(false)
+    const [error, setError] = useState('')
 
     useEffect(() => {
         fetch(`/songs/${props.match.params.song_id}/rewrites/${props.match.params.id}`)
@@ -32,10 +33,14 @@ const Rewrite = (props) => {
           })
           .then(res => res.json())
           .then(updatedRewrite => {
-            setRewrite({
-                ...rewrite,
-                rewritten_lyrics: updatedRewrite.rewritten_lyrics
-            })
+            if(updatedRewrite.error){
+                setError(updatedRewrite.error)
+            } else {
+                setRewrite({
+                    ...rewrite,
+                    rewritten_lyrics: updatedRewrite.rewritten_lyrics
+                })
+            }
         })
         setFormFlag(false)
     }
@@ -46,6 +51,8 @@ const Rewrite = (props) => {
             {rewrite.rewritten_lyrics}
             <p>By: {rewrite.user.username}</p>
             {formFlag ? <EditLyricsForm editRewrite={updateRewrite} rewritten_lyrics={rewrite.rewritten_lyrics} rewrite={rewrite}/> : <button onClick={() => setFormFlag(true)}>Edit Lyrics</button>}
+            <br/>
+            <h3>{error}</h3>
         </div>
     )
 
