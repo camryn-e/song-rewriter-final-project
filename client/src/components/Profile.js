@@ -24,7 +24,7 @@ const Profile = () => {
     }, [])
 
     const deleteRewrite = (rewrite) => {
-        fetch(`/songs/${rewrite.song_id}/rewrites/${rewrite.id}`,{
+        fetch(`/me/${rewrite.id}`,{
             method: 'DELETE'
           })
           .then(() => {
@@ -49,7 +49,6 @@ const Profile = () => {
             </div>
         )
     } else {
-        console.log("error", user.error)
         return(
             <h3>Unauthorized. Please Sign Up or Log In!</h3>
             // <h3>{user.error}</h3>

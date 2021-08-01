@@ -6,18 +6,19 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   post '/songs/:song_id/rewrites', to: 'rewrites#create'
   post '/songs', to: 'songs#create'
-  patch '/songs/:song_id/rewrites/:id', to: 'rewrites#update'
+  patch '/me/:id', to: 'rewrites#update'
 
   # get
   get '/me', to: 'users#show'
   get '/songs/:song_id/rewrites/:id', to: 'rewrites#show'
   get '/songs/:id/rewrites', to: 'songs#show'
   get '/songs', to: 'songs#index'
+  get '/me/:id', to: 'rewrites#show'
 
   # delete
   delete '/logout', to: 'sessions#destroy'
   delete '/delete-account', to: 'users#destroy'
-  delete '/songs/:song_id/rewrites/:id', to: 'rewrites#destroy'
+  delete '/me/:id', to: 'rewrites#destroy'
 
   # resources :songs do
   #   resources :rewrites

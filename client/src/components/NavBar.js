@@ -8,7 +8,7 @@ const NavBar = (props) => {
                <NavLink to='/songs'>
                    <button>All Songs</button>
                 </NavLink>
-               <NavLink to='/profile'>
+               <NavLink to='/me'>
                    <button>Profile</button>
                 </NavLink>
                 <button onClick={props.loggedOut}>Log Out</button>

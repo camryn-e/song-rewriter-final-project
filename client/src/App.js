@@ -103,12 +103,11 @@ function App() {
         />
         <Route exact path="/add-song" component={NewSongForm} />
         <Route path={`/songs/:song_id/rewrites/:id`} component={Rewrite} />
+        <Route path={`/me/:id`} component={Rewrite} />
         <Route path={`/songs/:id/rewrites`} component={Song} />
-        {/* <Route path={`/songs/:song_id/rewrites/:id`} component={Rewrite}/> */}
-        {/* <Route path={`/songs/:id`} component={Song}/> */}
         <Route exact path="/songs" component={SongsPage} />
         <Route exact path="/add-rewrite" component={NewRewriteForm} />
-        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/me" component={Profile} />
       </Switch>
     </div>
   );

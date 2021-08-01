@@ -21,7 +21,7 @@ class RewritesController < ApplicationController
     render json: rewrite, include: :user
   end
 
-  # allows user to edit rewrite
+  # edit rewrite
   def update
     rewrite = Rewrite.find_by(id: params[:id])
     rewrite.update(rewritten_lyrics: params[:rewritten_lyrics])
