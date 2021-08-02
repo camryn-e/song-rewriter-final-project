@@ -23,10 +23,6 @@ class RewritesController < ApplicationController
 
   # edit rewrite
   def update
-    # rewrite = Rewrite.find_by(id: params[:id])
-    # rewrite.update(rewritten_lyrics: params[:rewritten_lyrics])
-    # render json: rewrite, include: :user
-
     user = User.find_by(id: session[:user_id])
     rewrite = user.rewrites.find_by(id: params[:id])
 

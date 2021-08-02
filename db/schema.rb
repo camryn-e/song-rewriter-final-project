@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_21_204036) do
+ActiveRecord::Schema.define(version: 2021_08_02_003130) do
 
   create_table "rewrites", force: :cascade do |t|
     t.string "title"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_07_21_204036) do
     t.string "original_lyrics"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "audio_url"
   end
 
   create_table "users", force: :cascade do |t|
