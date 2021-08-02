@@ -6,10 +6,9 @@ const Song = (props) => {
 
     const [song, setSong] = useState({
         title: '',
-        rewrites: []
+        rewrites: [],
+        song_url: ''
     })
-
-    // const [rewrites, setRewrites] = useState([])
 
     const [formFlag, setFormFlag] = useState(false);
     const [error, setError] = useState('')
@@ -20,7 +19,7 @@ const Song = (props) => {
           .then(rewritesData => {
               console.log("rewrite data", rewritesData)
               setSong(rewritesData)
-          })
+        })
     }, [props.match.params.id])
 
 
@@ -39,7 +38,7 @@ const Song = (props) => {
             }else{
                 console.log("user on creation", newRewrite.user_id)
                 setSong({
-                    rewrites: [...song.rewrites, newRewrite]
+                    rewrites: [...song.rewrites, newRewrite],
                 })
             }
         })
@@ -51,10 +50,12 @@ const Song = (props) => {
     return(
         <div>
             <h2>{song.title}</h2>
+            <p>{song.original_lyrics}</p>
             <ul>
                 {rewriteList}
                 {formFlag ? <NewRewriteForm addNewRewrite={addRewrite} original_lyrics={song.original_lyrics} song_id={song.id}/> : <button onClick={() => setFormFlag(true)}>Add Rewrite</button>}
             </ul>
+            <iframe width="560" height="315" src={song.song_url} title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
             <h3>{error}</h3>
         </div>
     )

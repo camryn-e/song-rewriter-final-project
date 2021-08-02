@@ -24,13 +24,13 @@ class SongsController < ApplicationController
 
   def show
     song = Song.find_by(id: params[:id])
-    render json: song, include: :rewrites
+    render json: song, include: :rewrites 
   end
 
   private
 
   def song_params
-    params.permit(:id, :title, :original_lyrics)
+    params.permit(:id, :title, :original_lyrics, :song_url)
   end
 
   def authorize

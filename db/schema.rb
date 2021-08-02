@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_08_02_003130) do
     t.string "original_lyrics"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "audio_url"
+    t.string "song_url"
   end
 
   create_table "users", force: :cascade do |t|

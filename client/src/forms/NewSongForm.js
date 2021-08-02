@@ -3,12 +3,14 @@ import { useState } from "react";
 const NewSongForm = ({ addNewSong }) => {
   const [title, setTitle] = useState("");
   const [original_lyrics, setOriginalLyrics] = useState("");
+  const [url, setUrl] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     addNewSong({
       title: title,
       original_lyrics: original_lyrics,
+      song_url: url
     });
   };
 
@@ -36,6 +38,16 @@ const NewSongForm = ({ addNewSong }) => {
           />
         </label>
         <br />
+        <label>
+          Youtube Link (Use "Embed Link" Option):
+          <textarea
+            cols="50"
+            rows="10"
+            id="url"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+          />
+        </label>
         <button type="submit">Submit!</button>
       </form>
     </div>
