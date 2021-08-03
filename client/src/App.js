@@ -104,8 +104,8 @@ function App() {
         <Route exact path="/add-song" component={NewSongForm} />
         <Route path={`/songs/:song_id/rewrites/:id`} component={Rewrite} />
         <Route path={`/me/:id`} component={Rewrite} />
-        <Route path={`/songs/:id/rewrites`} component={Song} />
-        <Route exact path="/songs" component={SongsPage} />
+        <Route path={`/songs/:id/rewrites`} render={(routerProps) => <Song {...routerProps} loggedIn={loggedIn}/>} />
+        <Route exact path="/songs" render={(routerProps) => <SongsPage {...routerProps} loggedIn={loggedIn}/>} />
         <Route exact path="/add-rewrite" component={NewRewriteForm} />
         <Route exact path="/me" component={Profile} />
       </Switch>

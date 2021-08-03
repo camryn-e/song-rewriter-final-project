@@ -38,7 +38,7 @@ const Song = (props) => {
             }else{
                 console.log("user on creation", newRewrite.user_id)
                 setSong({
-                    rewrites: [...song.rewrites, newRewrite],
+                    rewrites: [...song.rewrites, newRewrite]
                 })
             }
         })
@@ -47,18 +47,32 @@ const Song = (props) => {
 
     const rewriteList = song.rewrites.map((r) => <RewriteLink key={r.id} rewrite={r}/>)
 
-    return(
-        <div>
-            <h2>{song.title}</h2>
-            <p>{song.original_lyrics}</p>
-            <ul>
-                {rewriteList}
-                {formFlag ? <NewRewriteForm addNewRewrite={addRewrite} original_lyrics={song.original_lyrics} song_id={song.id}/> : <button onClick={() => setFormFlag(true)}>Add Rewrite</button>}
-            </ul>
-            <iframe width="560" height="315" src={song.song_url} title="YouTube video player" frameBorder="0" allowFullScreen></iframe>
-            <h3>{error}</h3>
-        </div>
-    )
+    if(props.loggedIn){
+        return(
+            <div>
+                <h2>{song.title}</h2>
+                <p>{song.original_lyrics}</p>
+                <ul>
+                    {rewriteList}
+                    {formFlag ? <NewRewriteForm addNewRewrite={addRewrite} original_lyrics={song.original_lyrics} song_id={song.id}/> : <button onClick={() => setFormFlag(true)}>Add Rewrite</button>}
+                </ul>
+                <iframe width="560" height="315" src={song.song_url} allow='autoplay' title="YouTube video player" frameBorder="0" allowFullScreen autoPlay={true}></iframe>
+                <h3>{error}</h3>
+            </div>
+        )
+    } else {
+        return(
+            <div>
+                <h2>{song.title}</h2>
+                <p>{song.original_lyrics}</p>
+                <ul>
+                    {rewriteList}
+                </ul>
+                <iframe width="560" height="315" src={song.song_url} allow='autoplay' title="YouTube video player" frameBorder="0" allowFullScreen autoPlay={true}></iframe>
+                <h3>{error}</h3>
+            </div>
+        )
+    }
 
 }
 
