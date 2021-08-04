@@ -10,6 +10,9 @@ class SongsController < ApplicationController
     else
       new_song = Song.create(song_params)
       if new_song.id
+        url = new_song.song_url
+        video_id = url[-11, 11]
+        new_song.update(song_url: video_id)
         render json: new_song, status: :created
       else
         render json: { error: 'Title Cannot Be Blank' }
@@ -20,11 +23,6 @@ class SongsController < ApplicationController
   def index
     songs = Song.all
     render json: songs
-  end
-
-  def show
-    song = Song.find_by(id: params[:id])
-    render json: song, include: :rewrites 
   end
 
   private

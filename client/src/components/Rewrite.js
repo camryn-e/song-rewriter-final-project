@@ -45,17 +45,28 @@ const Rewrite = (props) => {
         setFormFlag(false)
     }
 
-    return (
-        <div>
-            <h2>{rewrite.title}</h2>
-            {rewrite.rewritten_lyrics}
-            <p>By: {rewrite.user.username}</p>
-            {formFlag ? <EditLyricsForm editRewrite={updateRewrite} rewritten_lyrics={rewrite.rewritten_lyrics} rewrite={rewrite}/> : <button onClick={() => setFormFlag(true)}>Edit Lyrics</button>}
-            <br/>
-            <h3>{error}</h3>
-        </div>
-    )
-
+    if(props.user.id === rewrite.user_id){
+        return (
+            <div>
+                <h2>{rewrite.title}</h2>
+                {rewrite.rewritten_lyrics}
+                <p>By: {rewrite.user.username}</p>
+                {formFlag ? <EditLyricsForm editRewrite={updateRewrite} rewritten_lyrics={rewrite.rewritten_lyrics} rewrite={rewrite}/> : <button onClick={() => setFormFlag(true)}>Edit Lyrics</button>}
+                <br/>
+                <h3>{error}</h3>
+            </div>
+        )
+    } else {
+        return (
+            <div>
+                <h2>{rewrite.title}</h2>
+                {rewrite.rewritten_lyrics}
+                <p>By: {rewrite.user.username}</p>
+                <br/>
+                <h3>{error}</h3>
+            </div>
+        )
+    }
 }
 
 export default Rewrite

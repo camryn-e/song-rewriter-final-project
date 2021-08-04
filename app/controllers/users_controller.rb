@@ -16,7 +16,6 @@ class UsersController < ApplicationController
 
   # me
   def show
-    # return render json: { error: "You Are Not Logged In" }, status: :unauthorized unless session.include? :user_id
     user = User.find(session[:user_id])
     render json: user, include: :rewrites
   end

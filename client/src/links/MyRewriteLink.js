@@ -8,7 +8,7 @@ const MyRewriteLink = ({ rewrite, deleteRewrite }) => {
 
   return (
     <div>
-      <Link to={`/me/${rewrite.id}`}>
+      <Link to={`/rewrites/${rewrite.id}`}>
         {rewrite.title}
       </Link>
       <button onClick={handleClick}>X</button>

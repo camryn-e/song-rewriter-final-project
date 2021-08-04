@@ -11,14 +11,14 @@ Rails.application.routes.draw do
   # get
   get '/me', to: 'users#show'
   get '/songs/:song_id/rewrites/:id', to: 'rewrites#show'
-  get '/songs/:id/rewrites', to: 'songs#show'
+  get '/songs/:song_id/rewrites', to: 'rewrites#index'
   get '/songs', to: 'songs#index'
-  get '/me/:id', to: 'rewrites#show'
+  get '/rewrites/:id', to: 'rewrites#show'
 
   # delete
   delete '/logout', to: 'sessions#destroy'
   delete '/delete-account', to: 'users#destroy'
-  delete '/me/:id', to: 'rewrites#destroy'
+  delete '/rewrites/:id', to: 'rewrites#destroy'
 
   # resources :songs do
   #   resources :rewrites

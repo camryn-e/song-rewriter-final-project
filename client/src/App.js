@@ -23,20 +23,18 @@ function App() {
   const history = useHistory();
 
   useEffect(() => {
-    fetch('/me')
-    .then(u => {
-      if(u.ok){
-        u.json()
-        .then(newU => {
-          setLoggedIn(true)
-          setUser(newU)
-          console.log('user:', newU)
-        })
-      // }else{
-      //   setError(u.error)
+    fetch("/me").then((u) => {
+      if (u.ok) {
+        u.json().then((newU) => {
+          setLoggedIn(true);
+          setUser(newU);
+          console.log("user:", newU);
+        });
+        // }else{
+        //   setError(u.error)
       }
-    })
-  }, [])
+    });
+  }, []);
 
   const loginUser = (u) => {
     console.log("this function is being called");
@@ -65,18 +63,6 @@ function App() {
     history.push("/");
   };
 
-  // const deleteRewrite = () => {
-  //   fetch(`/songs/${rewrite.song_id}/rewrites/${rewrite.id}`,{
-  //     method: 'DELETE'
-  //   })
-  //   .then(() => {
-  //     setUser({
-
-  //     })
-  //   })
-  //   history.push('/')
-  // }
-
   return (
     <div>
       <NavBar
@@ -101,13 +87,26 @@ function App() {
             <LoginForm {...routerProps} onLogin={loginUser} />
           )}
         />
-        <Route exact path="/add-song" component={NewSongForm} />
-        <Route path={`/songs/:song_id/rewrites/:id`} component={Rewrite} />
-        <Route path={`/me/:id`} component={Rewrite} />
-        <Route path={`/songs/:id/rewrites`} render={(routerProps) => <Song {...routerProps} loggedIn={loggedIn}/>} />
-        <Route exact path="/songs" render={(routerProps) => <SongsPage {...routerProps} loggedIn={loggedIn}/>} />
-        <Route exact path="/add-rewrite" component={NewRewriteForm} />
-        <Route exact path="/me" component={Profile} />
+        {/* <Route exact path="/songs/new" component={NewSongForm} /> */}
+        <Route path={`/songs/:song_id/rewrites/:id`} render={routerProps => (<Rewrite {...routerProps} user={user}/>)} />
+        <Route path={`/rewrites/:id`} render={routerProps => (<Rewrite {...routerProps} user={user}/>)} />
+        {/* SEND TO REWRITES#INDEX */}
+        <Route
+          path={`/songs/:song_id/rewrites`}
+          render={routerProps => (
+            <Song {...routerProps} loggedIn={loggedIn} />
+          )}
+        />
+        <Route
+          exact
+          path="/songs"
+          render={routerProps => (
+            <SongsPage {...routerProps} loggedIn={loggedIn} />
+          )}
+        />
+        {/* <Route exact path="/songs/:song_id/rewrites/new" component={NewRewriteForm} /> */}
+        {/* USERS REWRITES */}
+        <Route exact path="/rewrites" component={Profile} />
       </Switch>
     </div>
   );

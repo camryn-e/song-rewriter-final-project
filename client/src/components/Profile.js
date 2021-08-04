@@ -5,7 +5,7 @@ const Profile = () => {
   const [user, setUser] = useState({
     username: "",
     name: "",
-    rewrites: [],
+    rewrites: []
   });
 
   const [error, setError] = useState("");
@@ -23,19 +23,26 @@ const Profile = () => {
   }, []);
 
   const deleteRewrite = (rewrite) => {
-    fetch(`/me/${rewrite.id}`, {
+    fetch(`/rewrites/${rewrite.id}`, {
       method: "DELETE",
     }).then(() => {
       const currentRewrites = user.rewrites.filter((e) => e.id !== rewrite.id);
       console.log("curr rewrites", currentRewrites);
       setUser({
         ...user,
-        rewrites: currentRewrites,
+        rewrites: currentRewrites
       });
     });
   };
 
   if (error === "") {
+
+    // const songList = user.songs.map((s) => (
+    //     <div key={s.id}>
+    //         <h2>{s.name}</h2>
+    //     </div>
+    //   ));
+
     const rewriteList = user.rewrites.map((r) => (
       <MyRewriteLink key={r.id} rewrite={r} deleteRewrite={deleteRewrite} />
     ));
@@ -49,7 +56,6 @@ const Profile = () => {
   } else {
     return (
       <h3>Unauthorized. Please Sign Up or Log In!</h3>
-      // <h3>{user.error}</h3>
     );
   }
 };

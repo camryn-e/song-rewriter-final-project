@@ -8,8 +8,8 @@ const NavBar = (props) => {
                <NavLink to='/songs'>
                    <button>All Songs</button>
                 </NavLink>
-               <NavLink to='/me'>
-                   <button>Profile</button>
+               <NavLink to='/rewrites'>
+                   <button>My Rewrites</button>
                 </NavLink>
                 <button onClick={props.loggedOut}>Log Out</button>
                 <button onClick={props.deleteAccount}>Delete Account</button>

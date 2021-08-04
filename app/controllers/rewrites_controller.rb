@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class RewritesController < ApplicationController
-  before_action :authorize, except: [:show]
-
+  before_action :authorize, except: [:show, :index]
   # add rewrite
   def create
     user = User.find_by(id: session[:user_id])
@@ -19,6 +18,12 @@ class RewritesController < ApplicationController
   def show
     rewrite = Rewrite.find_by(id: params[:id])
     render json: rewrite, include: :user
+  end
+
+  # display all rewrites for a given song
+  def index
+    song = Song.find_by(id: params[:song_id])
+    render json: song, include: :rewrites
   end
 
   # edit rewrite
