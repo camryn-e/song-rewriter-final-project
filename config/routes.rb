@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   post '/songs/:song_id/rewrites', to: 'rewrites#create'
   post '/songs', to: 'songs#create'
-  patch '/me/:id', to: 'rewrites#update'
+  patch '/rewrites/:id', to: 'rewrites#update'
 
   # get
   get '/me', to: 'users#show'
@@ -14,10 +14,11 @@ Rails.application.routes.draw do
   get '/songs/:song_id/rewrites', to: 'rewrites#index'
   get '/songs', to: 'songs#index'
   get '/rewrites/:id', to: 'rewrites#show'
+  get '/rewrites', to: 'rewrites#my_rewrites'
 
   # delete
   delete '/logout', to: 'sessions#destroy'
-  delete '/delete-account', to: 'users#destroy'
+  delete '/me', to: 'users#destroy'
   delete '/rewrites/:id', to: 'rewrites#destroy'
 
   # resources :songs do

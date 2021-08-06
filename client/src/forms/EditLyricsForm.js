@@ -9,7 +9,7 @@ const EditLyricsForm = ({ rewritten_lyrics, editRewrite }) => {
   };
 
   return (
-    <div>
+    <div class='form'>
       <form onSubmit={handleSubmit}>
         <label>
           Edit Lyrics:

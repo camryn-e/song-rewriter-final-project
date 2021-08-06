@@ -16,9 +16,11 @@ const NewSongForm = ({ addNewSong }) => {
 
   return (
     <div>
+      <br/>
       <form onSubmit={handleSubmit}>
         <label>
           Title:
+          <br/>
           <input
             type="text"
             id="title"
@@ -29,6 +31,7 @@ const NewSongForm = ({ addNewSong }) => {
         <br />
         <label>
           Original Lyrics:
+          <br/>
           <textarea
             cols="50"
             rows="10"
@@ -39,10 +42,10 @@ const NewSongForm = ({ addNewSong }) => {
         </label>
         <br />
         <label>
-          Youtube Link (Use "Embed Link" Option):
-          <textarea
-            cols="50"
-            rows="10"
+          Youtube Link:
+          <br/>
+          <input
+            type="text"
             id="url"
             value={url}
             onChange={(e) => setUrl(e.target.value)}

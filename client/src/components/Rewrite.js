@@ -47,7 +47,7 @@ const Rewrite = (props) => {
 
     if(props.user.id === rewrite.user_id){
         return (
-            <div>
+            <div class='backdrop'>
                 <h2>{rewrite.title}</h2>
                 {rewrite.rewritten_lyrics}
                 <p>By: {rewrite.user.username}</p>

@@ -2,22 +2,19 @@ import { useEffect, useState } from "react";
 import MyRewriteLink from "../links/MyRewriteLink";
 
 const Profile = () => {
-  const [user, setUser] = useState({
-    username: "",
-    name: "",
-    rewrites: []
-  });
+
+  const [rewrites, setRewrites] = useState([]);
 
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch(`/me`)
+    fetch(`/rewrites`)
       .then((res) => res.json())
-      .then((userData) => {
-        if (userData.error) {
-          setError(userData.error);
+      .then((rewritesData) => {
+        if (rewritesData.error) {
+          setError(rewritesData.error);
         } else {
-          setUser(userData);
+          setRewrites(rewritesData);
         }
       });
   }, []);
@@ -26,37 +23,24 @@ const Profile = () => {
     fetch(`/rewrites/${rewrite.id}`, {
       method: "DELETE",
     }).then(() => {
-      const currentRewrites = user.rewrites.filter((e) => e.id !== rewrite.id);
-      console.log("curr rewrites", currentRewrites);
-      setUser({
-        ...user,
-        rewrites: currentRewrites
-      });
+      const currentRewrites = rewrites.filter((e) => e.id !== rewrite.id);
+      setRewrites(currentRewrites);
     });
   };
 
   if (error === "") {
 
-    // const songList = user.songs.map((s) => (
-    //     <div key={s.id}>
-    //         <h2>{s.name}</h2>
-    //     </div>
-    //   ));
-
-    const rewriteList = user.rewrites.map((r) => (
+    const rewriteList = rewrites.map((r) => (
       <MyRewriteLink key={r.id} rewrite={r} deleteRewrite={deleteRewrite} />
     ));
 
     return (
       <div>
-        <h2>{user.name}</h2>
         <ul>{rewriteList}</ul>
       </div>
     );
   } else {
-    return (
-      <h3>Unauthorized. Please Sign Up or Log In!</h3>
-    );
+    return <h3>Unauthorized. Please Sign Up or Log In!</h3>;
   }
 };
 

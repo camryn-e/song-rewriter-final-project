@@ -36,6 +36,7 @@ const LoginForm = ({ onLogin }) => {
             type="text"
             id="username"
             value={username}
+            placeholder="Enter Username"
             onChange={(e) => setUsername(e.target.value)}
           />
         </label>
@@ -46,6 +47,7 @@ const LoginForm = ({ onLogin }) => {
             type="password"
             id="password"
             value={password}
+            placeholder="Enter Password"
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>

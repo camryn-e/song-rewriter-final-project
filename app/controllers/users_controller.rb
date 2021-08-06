@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   # me
   def show
     user = User.find(session[:user_id])
-    render json: user, include: :rewrites
+    render json: user
   end
 
   # delete account

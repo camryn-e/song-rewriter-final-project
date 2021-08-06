@@ -46,7 +46,7 @@ const Song = (props) => {
         setFormFlag(false)
     }
 
-    const rewriteList = song.rewrites.map((r) => <RewriteLink key={r.id} rewrite={r} />)
+    const rewriteList = song.rewrites.map((r) => <RewriteLink key={r.id} rewrite={r}/>)
 
     if(props.loggedIn){
         return(

@@ -51,6 +51,12 @@ class RewritesController < ApplicationController
     end
   end
 
+  def my_rewrites
+    user = User.find_by(id: session[:user_id])
+    rewrites = user.rewrites
+    render json: rewrites
+  end
+
   private
 
   def rewrite_params

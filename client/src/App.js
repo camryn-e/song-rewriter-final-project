@@ -16,8 +16,7 @@ import Profile from "./components/Profile";
 function App() {
   const [user, setUser] = useState({
     username: "",
-    name: "",
-    rewrites: [],
+    name: ""
   });
   const [loggedIn, setLoggedIn] = useState(false);
   const history = useHistory();
@@ -54,7 +53,7 @@ function App() {
   };
 
   const deleteAccount = () => {
-    fetch("/delete-account", {
+    fetch("/me", {
       method: "DELETE",
     }).then(() => {
       setLoggedIn(false);
@@ -71,6 +70,7 @@ function App() {
         loggedOut={logoutUser}
         deleteAccount={deleteAccount}
       />
+      <br/>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route
@@ -88,19 +88,25 @@ function App() {
           )}
         />
         {/* <Route exact path="/songs/new" component={NewSongForm} /> */}
-        <Route path={`/songs/:song_id/rewrites/:id`} render={routerProps => (<Rewrite {...routerProps} user={user}/>)} />
-        <Route path={`/rewrites/:id`} render={routerProps => (<Rewrite {...routerProps} user={user}/>)} />
+        <Route
+          path={`/songs/:song_id/rewrites/:id`}
+          render={(routerProps) => <Rewrite {...routerProps} user={user} />}
+        />
+        <Route
+          path={`/rewrites/:id`}
+          render={(routerProps) => <Rewrite {...routerProps} user={user} />}
+        />
         {/* SEND TO REWRITES#INDEX */}
         <Route
           path={`/songs/:song_id/rewrites`}
-          render={routerProps => (
+          render={(routerProps) => (
             <Song {...routerProps} loggedIn={loggedIn} />
           )}
         />
         <Route
           exact
           path="/songs"
-          render={routerProps => (
+          render={(routerProps) => (
             <SongsPage {...routerProps} loggedIn={loggedIn} />
           )}
         />

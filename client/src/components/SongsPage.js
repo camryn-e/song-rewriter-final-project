@@ -49,7 +49,7 @@ const SongsPage = ({ loggedIn }) => {
           {formFlag ? (
             <NewSongForm addNewSong={addSong} />
           ) : (
-            <button onClick={() => setFormFlag(true)}>Add Song</button>
+            <div><button onClick={() => setFormFlag(true)}>Add Song</button></div>
           )}
         </ul>
         <h3>{error}</h3>
