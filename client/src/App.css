@@ -46,7 +46,7 @@ div.nav {
   left: 0;
   width: 100%;
   border: 1px solid;
-  margin: 0;
+  margin: auto;
   text-align: left;
 }
 
@@ -58,21 +58,29 @@ body {
   text-align: center;
 }
 
-/* div.nav {
-  padding: 0;
-  overflow: hidden;
-  background-color: black;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  border: 1px solid;
-  margin: 0
-} */
+div.form {
+  background-color: rgb(145, 145, 248);
+  border: 3px solid violet;
+  border-radius: 25px;
+  width: 30%;
+  margin: auto;
+}
+
+form {
+  color: white;
+  text-align: center;
+}
+
+input {
+  border-radius: 25px;
+}
+
+textarea {
+  border-radius: 25px;
+}
 
 div.nav a, h3 {
   color: white;
-  /* border: 2px solid rgba(4, 56, 53, 0.308); */
   text-decoration: none;
   display: inline-block;
   margin: 0;
@@ -95,9 +103,22 @@ div.bottom-nav button {
   border: none;
   color: white;
   padding: 15px 32px;
-  /* text-align: center; */
+  text-align: center;
   text-decoration: none;
   font-size: 16px;
+}
+
+div.link {
+  background-color: salmon;
+  margin: auto;
+  width: 10%;
+  border: 1px solid;
+  border-radius: 25px;
+}
+
+div.link a{
+  text-decoration: none;
+  color: white;
 }
 
 /* div.nav button:hover {

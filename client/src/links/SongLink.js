@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const SongLink = ({ song }) => {
   return (
-    <div>
+    <div class="link">
       <Link to={`/songs/${song.id}/rewrites`}>{song.title}</Link>
     </div>
   );

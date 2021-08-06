@@ -13,7 +13,7 @@ const NewRewriteForm = ({ original_lyrics, addNewRewrite }) => {
   };
 
   return (
-    <div>
+    <div class='form'>
       <form onSubmit={handleSubmit}>
         <label>
           Title:

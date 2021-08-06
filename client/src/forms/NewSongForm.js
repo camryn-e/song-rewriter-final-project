@@ -15,7 +15,7 @@ const NewSongForm = ({ addNewSong }) => {
   };
 
   return (
-    <div>
+    <div class='form'>
       <br/>
       <form onSubmit={handleSubmit}>
         <label>
