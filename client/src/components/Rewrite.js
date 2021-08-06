@@ -22,7 +22,7 @@ const Rewrite = (props) => {
     }, [props.match.params.id, props.match.params.song_id])
 
     const updateRewrite = (editedRewrite) => {
-        fetch(`/me/${rewrite.id}`,{
+        fetch(`/rewrites/${rewrite.id}`,{
             method: 'PATCH',
             headers: {
                 "Content-Type": "application/json"

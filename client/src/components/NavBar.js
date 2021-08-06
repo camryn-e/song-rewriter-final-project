@@ -5,13 +5,14 @@ const NavBar = (props) => {
     return (
       <div>
           <div class="nav">
-              {/* <h1>Hello {props.user.username}</h1> */}
+            {/* <h1>Hello {props.user.username}</h1> */}
           <NavLink to="/songs">
             All Songs
           </NavLink>
           <NavLink to="/rewrites">
             My Rewrites
           </NavLink>
+          <h3>{props.user.username}</h3>
           </div>
         <div class="bottom-nav">
             <button onClick={props.loggedOut}>Log Out</button>
