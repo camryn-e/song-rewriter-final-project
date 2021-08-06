@@ -41,6 +41,7 @@ const SignupForm = ({ onLogin }) => {
             type="text"
             id="username"
             value={username}
+            placeholder="Enter Username"
             onChange={(e) => setUsername(e.target.value)}
           />
         </label>
@@ -51,6 +52,7 @@ const SignupForm = ({ onLogin }) => {
             type="password"
             id="password"
             value={password}
+            placeholder="Enter Password"
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
@@ -61,6 +63,7 @@ const SignupForm = ({ onLogin }) => {
             type="password"
             id="password_confirmation"
             value={password_confirmation}
+            placeholder="Confirm Password"
             onChange={(e) => setPasswordConfirmation(e.target.value)}
           />
         </label>
@@ -72,6 +75,7 @@ const SignupForm = ({ onLogin }) => {
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            placeholder="Enter Name"
           />
         </label>
         <br />
