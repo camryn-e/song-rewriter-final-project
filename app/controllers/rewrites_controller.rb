@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class RewritesController < ApplicationController
-  before_action :authorize, except: [:show, :index]
+  before_action :find_user, except: [:show, :index]
+
   # add rewrite
   def create
-    user = User.find_by(id: session[:user_id])
-    rewrite = user.rewrites.create(rewrite_params)
+    # user = User.find_by(id: session[:user_id])
+    rewrite = @user.rewrites.create(rewrite_params)
     # rewrite.user_id = user.id
     if rewrite
       render json: rewrite, status: :created
@@ -28,8 +29,8 @@ class RewritesController < ApplicationController
 
   # edit rewrite
   def update
-    user = User.find_by(id: session[:user_id])
-    rewrite = user.rewrites.find_by(id: params[:id])
+    # user = User.find_by(id: session[:user_id])
+    rewrite = @user.rewrites.find_by(id: params[:id])
 
     if rewrite
       rewrite.update(rewritten_lyrics: params[:rewritten_lyrics])
@@ -41,8 +42,8 @@ class RewritesController < ApplicationController
 
   # delete rewrite
   def destroy
-    user = User.find_by(id: session[:user_id])
-    rewrite = user.rewrites.find_by(id: params[:id])
+    # user = User.find_by(id: session[:user_id])
+    rewrite = @user.rewrites.find_by(id: params[:id])
 
     if rewrite
       rewrite.destroy
@@ -52,8 +53,8 @@ class RewritesController < ApplicationController
   end
 
   def my_rewrites
-    user = User.find_by(id: session[:user_id])
-    rewrites = user.rewrites
+    # user = User.find_by(id: session[:user_id])
+    rewrites = @user.rewrites
     render json: rewrites
   end
 
@@ -63,7 +64,9 @@ class RewritesController < ApplicationController
     params.permit(:id, :title, :rewritten_lyrics, :song_id, :user_id)
   end
 
-  def authorize
+  def find_user
     return render json: { error: 'Not Logged In' }, status: :unauthorized unless session.include? :user_id
+    @user = User.find_by(id: session[:user_id])
+    @user
   end
 end
